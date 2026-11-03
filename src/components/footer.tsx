@@ -51,7 +51,7 @@ export function Footer() {
       <div className="h-1.5 bg-gradient-to-r from-brand-dark via-brand to-brand-dark" aria-hidden />
 
       <div className="embers">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-6 px-4 py-10 lg:gap-y-10 lg:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           {/* Marca */}
           <div className="col-span-2 flex flex-col items-center text-center sm:items-start sm:text-left lg:col-span-1">
             <div className="flex items-center gap-4">
@@ -103,9 +103,11 @@ export function Footer() {
           </div>
 
           {/* Navegação */}
-          <nav aria-label="Rodapé">
-            <ColumnTitle>Navegação</ColumnTitle>
-            <ul className="space-y-0.5 text-sm">
+          <nav aria-label="Rodapé" className="col-span-2 lg:col-span-1">
+            <div className="hidden lg:block">
+              <ColumnTitle>Navegação</ColumnTitle>
+            </div>
+            <ul className="flex flex-wrap justify-center gap-x-5 text-sm lg:block lg:space-y-0.5">
               {footerNav.map((item) => (
                 <li key={item.href}>
                   <a
@@ -119,8 +121,8 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Horário */}
-          <div>
+          {/* Horário (só no desktop; no celular já aparece em "Onde estamos") */}
+          <div className="hidden lg:block">
             <ColumnTitle>Horário</ColumnTitle>
             {site.hours ? (
               <ul className="space-y-3 text-sm text-stone-400">
@@ -142,8 +144,8 @@ export function Footer() {
             )}
           </div>
 
-          {/* Contato */}
-          <address className="col-span-2 not-italic lg:col-span-1">
+          {/* Contato (só no desktop; no celular já aparece em "Onde estamos") */}
+          <address className="hidden not-italic lg:block">
             <ColumnTitle>Contato</ColumnTitle>
             <ul className="space-y-3 text-sm text-stone-400">
               <li>
