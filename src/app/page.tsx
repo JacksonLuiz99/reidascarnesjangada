@@ -9,12 +9,12 @@ import {
   MotoIcon,
   PhoneIcon,
   PinIcon,
-  StarIcon,
   TagIcon,
   WhatsappIcon,
 } from "@/components/icons";
 import { Countdown } from "@/components/countdown";
-import { developer } from "@/lib/developer";
+import { Footer } from "@/components/footer";
+import { MobileMenu } from "@/components/mobile-menu";
 import { products } from "@/lib/products";
 import { mapsEmbedUrl, mapsLinkUrl, site } from "@/lib/site";
 
@@ -119,11 +119,6 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
   );
 }
 
-async function CurrentYear() {
-  "use cache";
-  return new Date().getFullYear();
-}
-
 function formatDate(date: string) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("pt-BR", {
     day: "numeric",
@@ -161,14 +156,14 @@ export default function Home() {
               height={44}
               className="rounded-full"
             />
-            <span className="font-display text-xl font-bold uppercase leading-none">
+            <span className="whitespace-nowrap font-display text-lg font-bold uppercase leading-none sm:text-xl">
               Rei das Carnes
               <span className="block text-xs font-medium tracking-[0.25em] text-brand">
                 {site.city}
               </span>
             </span>
           </a>
-          <nav className="hidden items-center gap-6 md:flex" aria-label="Principal">
+          <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Principal">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -183,12 +178,13 @@ export default function Home() {
             href={site.whatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+            className="ml-auto inline-flex h-10 items-center gap-2 rounded-full bg-brand px-4 text-sm font-semibold text-white transition hover:bg-brand-dark"
           >
             <WhatsappIcon className="size-4" />
             <span className="hidden sm:inline">Fazer pedido</span>
-            <span className="sm:hidden">Pedir</span>
+            <span className="max-[359px]:sr-only sm:hidden">Pedir</span>
           </a>
+          <MobileMenu items={nav} />
         </div>
       </header>
 
@@ -216,7 +212,7 @@ export default function Home() {
               className="rounded-full border-4 border-brand shadow-2xl shadow-brand/40"
             />
 
-            <p className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand/60 bg-black/50 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-white">
+            <p className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-brand/60 bg-black/50 px-4 py-1.5 text-left sm:rounded-full text-[11px] font-semibold uppercase tracking-wider text-white sm:text-sm sm:tracking-widest">
               <span className="relative flex size-2">
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-75 motion-reduce:hidden" />
                 <span className="relative inline-flex size-2 rounded-full bg-brand" />
@@ -326,7 +322,7 @@ export default function Home() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="rounded-2xl object-cover"
               />
-              <div className="absolute -bottom-5 -right-3 rounded-xl bg-brand px-5 py-3 font-display text-lg font-bold uppercase shadow-xl sm:-right-5">
+              <div className="absolute -bottom-5 right-3 rounded-xl bg-brand px-4 py-2.5 font-display text-base font-bold uppercase shadow-xl sm:-right-5 sm:px-5 sm:py-3 sm:text-lg">
                 Preparativos a todo vapor!
               </div>
             </div>
@@ -496,7 +492,7 @@ export default function Home() {
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-semibold text-brand hover:underline"
+                className="inline-flex items-center gap-2 py-3 font-semibold text-brand hover:underline"
               >
                 <InstagramIcon className="size-5" />
                 Ver tudo no Instagram
@@ -523,7 +519,7 @@ export default function Home() {
                     href={mapsLinkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-block text-sm font-semibold text-brand hover:underline"
+                    className="mt-1 inline-block py-2 text-sm font-semibold text-brand hover:underline"
                   >
                     Abrir no Google Maps →
                   </a>
@@ -551,7 +547,7 @@ export default function Home() {
                 <PhoneIcon className="size-6 shrink-0 text-brand" />
                 <div>
                   <h3 className="font-display text-lg font-medium uppercase">Contato</h3>
-                  <a href={site.phoneHref} className="text-stone-300 hover:text-white">
+                  <a href={site.phoneHref} className="inline-block py-2 text-stone-300 hover:text-white">
                     {site.phoneDisplay}
                   </a>
                 </div>
@@ -572,84 +568,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Rodapé */}
-      <footer className="border-t border-white/10 bg-black">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-10 text-center">
-          <Image src="/images/logo.png" alt="" width={72} height={72} className="rounded-full" />
-          <p className="font-display text-xl font-bold uppercase">
-            {site.name} <span className="text-brand">{site.city}</span>
-          </p>
-          <div className="flex text-brand" aria-label="Três estrelas">
-            <StarIcon className="size-4" />
-            <StarIcon className="size-4" />
-            <StarIcon className="size-4" />
-          </div>
-          <div className="flex gap-4">
-            <a
-              href={site.instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="flex size-10 items-center justify-center rounded-full bg-surface-2 transition hover:bg-brand"
-            >
-              <InstagramIcon className="size-5" />
-            </a>
-            <a
-              href={site.whatsappUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="flex size-10 items-center justify-center rounded-full bg-surface-2 transition hover:bg-brand"
-            >
-              <WhatsappIcon className="size-5" />
-            </a>
-          </div>
-          <p className="text-xs text-muted">
-            © <CurrentYear /> {site.name} · {site.address.street},{" "}
-            {site.address.district} · {site.address.city}-{site.address.state}
-          </p>
-        </div>
-        <div className="border-t border-white/10">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-5 pb-24 text-xs text-muted sm:flex-row sm:pb-5">
-            <p>
-              Desenvolvido por{" "}
-              <a
-                href={developer.portfolio}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-foreground underline-offset-4 hover:text-brand hover:underline"
-              >
-                {developer.name}
-              </a>{" "}
-              · {developer.role}
-            </p>
-            <ul className="flex gap-4">
-              {developer.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={developer.portfolio}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground"
-                >
-                  Portfólio
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Botão flutuante do WhatsApp */}
       <a

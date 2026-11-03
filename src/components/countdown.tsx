@@ -36,11 +36,11 @@ export function Countdown({ target }: { target: string }) {
   ];
 
   return (
-    <div className="flex justify-center gap-3" role="timer" aria-label="Contagem regressiva para a inauguração">
+    <div className="flex w-full max-w-sm justify-center gap-2 sm:gap-3" role="timer" aria-label="Contagem regressiva para a inauguração">
       {parts.map((part) => (
         <div
           key={part.label}
-          className="flex w-[70px] flex-col items-center rounded-xl border border-white/10 bg-black/60 py-3 sm:w-20"
+          className="flex max-w-20 flex-1 flex-col items-center rounded-xl border border-white/10 bg-black/60 py-3"
         >
           <span className="font-display text-3xl font-bold tabular-nums sm:text-4xl">
             {String(part.value).padStart(2, "0")}
