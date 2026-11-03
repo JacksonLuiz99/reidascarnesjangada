@@ -23,10 +23,10 @@ export const site = {
     city: "Jangada",
     state: "MT",
   },
-  // Ainda não definidos — quando definir, troque `null` pelo valor
-  // (ex.: openingDate: "2026-11-20", hours: ["Seg a Sáb: 7h às 19h", "Dom: 7h às 12h"]).
+  // Ainda não definida — quando definir, troque `null` pela data (ex.: "2026-11-20").
   openingDate: null as string | null,
-  hours: null as string[] | null,
+  // Dias da semana ainda não confirmados (ver PENDENCIAS.md).
+  hours: ["Manhã: 07h às 12h", "Tarde: 15h às 19h30"] as string[] | null,
 };
 
 // Coordenadas exatas da loja (Street View enviado pelo cliente).
