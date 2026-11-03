@@ -23,8 +23,16 @@ export const site = {
     city: "Jangada",
     state: "MT",
   },
-  // Ainda não definida — quando definir, troque `null` pela data (ex.: "2026-11-20").
-  openingDate: null as string | null,
+  inauguration: {
+    date: "2026-11-28",
+    weekday: "Sábado",
+    period: "pela manhã",
+    // Horário exato de início ainda não confirmado (ver PENDENCIAS.md);
+    // 07h = abertura da loja. Fuso de Cuiabá: UTC-4.
+    startsAt: "2026-11-28T07:00:00-04:00",
+    endsAt: "2026-11-28T12:00:00-04:00",
+    skewers: 500,
+  },
   // Dias da semana ainda não confirmados (ver PENDENCIAS.md).
   hours: ["Manhã: 07h às 12h", "Tarde: 15h às 19h30"] as string[] | null,
 };

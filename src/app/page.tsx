@@ -13,9 +13,11 @@ import {
   TagIcon,
   WhatsappIcon,
 } from "@/components/icons";
+import { Countdown } from "@/components/countdown";
 import { mapsEmbedUrl, mapsLinkUrl, site } from "@/lib/site";
 
 const nav = [
+  { href: "#inauguracao", label: "Inauguração" },
   { href: "#sobre", label: "Sobre" },
   { href: "#produtos", label: "Produtos" },
   { href: "#delivery", label: "Delivery" },
@@ -106,17 +108,29 @@ async function CurrentYear() {
   return new Date().getFullYear();
 }
 
-function formatOpeningDate(date: string) {
+function formatDate(date: string) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("pt-BR", {
-    day: "2-digit",
+    day: "numeric",
     month: "long",
   });
 }
 
+const toCalendarDate = (iso: string) =>
+  new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+
+const { inauguration } = site;
+const inaugurationDay = formatDate(inauguration.date);
+
+const calendarUrl = `https://calendar.google.com/calendar/render?${new URLSearchParams({
+  action: "TEMPLATE",
+  text: "Inauguração Rei das Carnes – Jangada-MT",
+  dates: `${toCalendarDate(inauguration.startsAt)}/${toCalendarDate(inauguration.endsAt)}`,
+  details: `Inauguração do Rei das Carnes com ${inauguration.skewers} espetinhos para comemorar!`,
+  location: `${site.address.street}, ${site.address.district}, ${site.address.city}-${site.address.state}`,
+})}`;
+
 export default function Home() {
-  const openingLabel = site.openingDate
-    ? `Inauguração em ${formatOpeningDate(site.openingDate)}`
-    : "Inauguração em breve";
+  const openingLabel = `Inauguração: ${inauguration.weekday.toLowerCase()}, ${inaugurationDay}`;
 
   return (
     <>
@@ -217,6 +231,69 @@ export default function Home() {
                 <InstagramIcon className="size-5" />
                 Siga no Instagram
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Inauguração */}
+        <section id="inauguracao" className="relative overflow-hidden bg-brand py-16">
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(-45deg, #000 0 2px, transparent 2px 22px)",
+            }}
+            aria-hidden
+          />
+          <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2">
+            <div className="text-center lg:text-left">
+              <p className="font-display text-sm font-medium uppercase tracking-[0.3em] text-white/80">
+                Grande inauguração
+              </p>
+              <h2 className="mt-2 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
+                {inauguration.weekday}, {inaugurationDay}
+                <span className="block text-2xl text-black sm:text-3xl">
+                  {inauguration.period}
+                </span>
+              </h2>
+              <p className="mt-6 text-lg text-white/90">
+                Vamos comemorar a chegada do Rei das Carnes com muita festa e
+                churrasco. Traga a família e venha conhecer a loja!
+              </p>
+              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+                <a
+                  href={calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 font-display text-lg font-medium uppercase tracking-wide text-white transition hover:bg-stone-900"
+                >
+                  <ClockIcon className="size-5" />
+                  Salvar na agenda
+                </a>
+                <a
+                  href="#localizacao"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 font-display text-lg font-medium uppercase tracking-wide text-white transition hover:bg-white hover:text-brand"
+                >
+                  <PinIcon className="size-5" />
+                  Como chegar
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-8">
+              <div className="relative flex size-60 flex-col items-center justify-center rounded-full border-8 border-white bg-black text-center shadow-2xl sm:size-72">
+                <GrillIcon className="size-10 text-brand" />
+                <span className="font-display text-7xl font-bold leading-none sm:text-8xl">
+                  {inauguration.skewers}
+                </span>
+                <span className="font-display text-2xl font-bold uppercase text-brand">
+                  espetinhos
+                </span>
+                <span className="mt-1 text-xs uppercase tracking-widest text-muted">
+                  para comemorar
+                </span>
+              </div>
+              <Countdown target={inauguration.startsAt} />
             </div>
           </div>
         </section>
