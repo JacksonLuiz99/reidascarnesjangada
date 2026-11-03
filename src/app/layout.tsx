@@ -15,6 +15,7 @@ const display = Oswald({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://reidascarnesjangada.vercel.app"),
   title: `${site.name} | ${site.city}`,
   description: site.description,
   openGraph: {
