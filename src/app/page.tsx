@@ -563,6 +563,7 @@ export default function Home() {
                 className="size-full min-h-80"
                 loading="lazy"
                 allowFullScreen
+                allow="accelerometer; gyroscope; fullscreen"
                 referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
