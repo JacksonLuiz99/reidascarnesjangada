@@ -11,7 +11,7 @@ Itens provisórios que precisam ser trocados ou confirmados.
 
 ## Informações
 
-- [ ] **Dias de funcionamento**: o horário (07h às 12h e 15h às 19h30) está definido, mas faltam os dias da semana (domingo e feriados?). Ajustar em `src/lib/site.ts` → `hours`.
+- [ ] **Abertura aos domingos e feriados**: já está definido que fecha às 18h. Falta confirmar o horário de abertura e se há pausa para o almoço (como de segunda a sábado). Ajustar em `src/lib/site.ts` → `hours`.
 - [ ] **Horário de início da inauguração**: definido como "sábado, 28/11, pela manhã". A contagem regressiva usa 07h. Confirmar e ajustar `inauguration.startsAt` em `src/lib/site.ts`.
 - [ ] **Área de entrega do delivery**: bairros atendidos, taxa e pedido mínimo, se houver.
 - [ ] **Ofertas da semana**: definir como serão divulgadas no site.

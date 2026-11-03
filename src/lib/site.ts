@@ -33,8 +33,11 @@ export const site = {
     endsAt: "2026-11-28T12:00:00-04:00",
     skewers: 500,
   },
-  // Dias da semana ainda não confirmados (ver PENDENCIAS.md).
-  hours: ["Manhã: 07h às 12h", "Tarde: 15h às 19h30"] as string[] | null,
+  // Horário de abertura aos domingos/feriados ainda não confirmado (ver PENDENCIAS.md).
+  hours: [
+    "Segunda a sábado: 07h às 12h e 15h às 19h30",
+    "Domingos e feriados: até as 18h",
+  ] as string[] | null,
 };
 
 // Coordenadas exatas da loja (Street View enviado pelo cliente).

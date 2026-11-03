@@ -13,7 +13,7 @@ Site do açougue **Rei das Carnes**, em Jangada-MT.
 - **Produtos:** categorias (Ofertas, Produtos, Churrasco, Delivery), cada uma abre o WhatsApp com uma mensagem pronta, e uma vitrine de produtos com fotos provisórias.
 - **Disk Entrega:** (65) 9 9805-8091, com botões de WhatsApp e ligação.
 - **Novidades:** posts do Instagram.
-- **Onde estamos:** endereço, horário (07h às 12h e 15h às 19h30), contato e Street View da fachada.
+- **Onde estamos:** endereço, horário (seg. a sáb. 07h às 12h e 15h às 19h30; domingos e feriados até as 18h), contato e Street View da fachada.
 - **Botão flutuante do WhatsApp** em todas as telas.
 
 ## Tecnologias
@@ -64,7 +64,7 @@ vercel deploy --prod
 
 ## Pendências
 
-O que ainda é provisório (logo em alta resolução, fotos reais, dias de funcionamento etc.) está em **[PENDENCIAS.md](PENDENCIAS.md)**.
+O que ainda é provisório (logo em alta resolução, fotos reais, abertura aos domingos etc.) está em **[PENDENCIAS.md](PENDENCIAS.md)**.
 
 ## Commits
 
