@@ -141,7 +141,6 @@ const calendarUrl = `https://calendar.google.com/calendar/render?${new URLSearch
 })}`;
 
 export default function Home() {
-  const openingLabel = `Inauguração: ${inauguration.weekday.toLowerCase()}, ${inaugurationDay}`;
 
   return (
     <>
@@ -197,42 +196,59 @@ export default function Home() {
             fill
             preload
             sizes="100vw"
-            className="-z-10 object-cover"
+            className="-z-10 hidden object-cover sm:block"
           />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/75 to-background" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black/80 to-background sm:from-black/70 sm:via-black/75" />
           <div className="embers absolute inset-0 -z-10" />
 
-          <div className="mx-auto flex max-w-6xl flex-col items-center px-4 pb-20 pt-16 text-center sm:pt-24">
+          <div className="mx-auto flex max-w-6xl flex-col items-center px-4 pb-16 pt-10 text-center sm:pb-20 sm:pt-20">
             <Image
               src="/images/logo.png"
               alt="Logo Rei das Carnes Jangada-MT"
-              width={180}
-              height={180}
+              width={160}
+              height={160}
               preload
-              className="rounded-full border-4 border-brand shadow-2xl shadow-brand/40"
+              className="size-28 rounded-full border-4 border-brand shadow-2xl shadow-brand/40 sm:size-40"
             />
 
-            <p className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-brand/60 bg-black/50 px-4 py-1.5 text-left sm:rounded-full text-[11px] font-semibold uppercase tracking-wider text-white sm:text-sm sm:tracking-widest">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-75 motion-reduce:hidden" />
-                <span className="relative inline-flex size-2 rounded-full bg-brand" />
-              </span>
-              {openingLabel}
-            </p>
-
-            <h1 className="mt-6 font-display text-5xl font-bold uppercase leading-[0.95] sm:text-7xl">
+            <h1 className="mt-6 font-display text-[2.6rem] font-bold uppercase leading-[0.95] sm:text-7xl">
               Tem novidade
-              <span className="ribbon mx-auto mt-3 block w-fit px-5 py-2 text-3xl sm:text-5xl">
+              <span className="ribbon mx-auto mt-3 block w-fit px-4 py-1.5 text-2xl sm:px-5 sm:py-2 sm:text-5xl">
                 chegando em Jangada!
               </span>
             </h1>
 
-            <p className="mt-10 max-w-xl text-lg text-stone-300">
+            {/* Contagem regressiva em destaque */}
+            <div className="mt-10 w-full max-w-md rounded-3xl border border-brand/40 bg-black/60 p-4 shadow-2xl shadow-brand/20 backdrop-blur sm:p-6">
+              <p className="flex items-center justify-center gap-2 font-display text-sm font-bold uppercase tracking-[0.3em] text-white">
+                <span className="relative flex size-2.5">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-75 motion-reduce:hidden" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-brand" />
+                </span>
+                Faltam
+              </p>
+              <div className="mt-3 flex justify-center">
+                <Countdown target={inauguration.startsAt} variant="hero" />
+              </div>
+              <p className="mt-4 text-sm text-stone-300">
+                para a <strong className="text-white">grande inauguração</strong> ·{" "}
+                {inauguration.weekday.toLowerCase()}, {inaugurationDay}, {inauguration.period}
+              </p>
+              <a
+                href="#inauguracao"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+              >
+                <GrillIcon className="size-4 text-brand" />
+                {inauguration.skewers} espetinhos para comemorar →
+              </a>
+            </div>
+
+            <p className="mt-8 hidden max-w-xl text-lg text-stone-300 sm:block">
               O Rei das Carnes chega trazendo variedade, qualidade e aquele
               atendimento que você merece. Carnes selecionadas, todos os dias.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row">
               <WhatsappButton />
               <a
                 href={site.instagram.url}
@@ -268,7 +284,13 @@ export default function Home() {
                   {inauguration.period}
                 </span>
               </h2>
-              <p className="mt-6 text-lg text-white/90">
+              <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
+                <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-black">
+                  Contagem regressiva
+                </p>
+                <Countdown target={inauguration.startsAt} variant="section" />
+              </div>
+              <p className="mt-8 text-lg text-white/90">
                 Vamos comemorar a chegada do Rei das Carnes com muita festa e
                 churrasco. Traga a família e venha conhecer a loja!
               </p>
@@ -305,7 +327,6 @@ export default function Home() {
                   para comemorar
                 </span>
               </div>
-              <Countdown target={inauguration.startsAt} />
             </div>
           </div>
         </section>
