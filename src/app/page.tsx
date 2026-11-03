@@ -14,6 +14,7 @@ import {
   WhatsappIcon,
 } from "@/components/icons";
 import { Countdown } from "@/components/countdown";
+import { products } from "@/lib/products";
 import { mapsEmbedUrl, mapsLinkUrl, site } from "@/lib/site";
 
 const nav = [
@@ -87,6 +88,20 @@ function WhatsappButton({
       <WhatsappIcon className="size-5" />
       {label}
     </a>
+  );
+}
+
+// Espaço reservado até termos as fotos reais dos produtos (ver PENDENCIAS.md).
+function PhotoPlaceholder() {
+  return (
+    <div
+      className="flex size-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-stone-800 via-stone-900 to-black text-stone-500"
+      role="img"
+      aria-label="Foto em breve"
+    >
+      <Image src="/images/logo.png" alt="" width={56} height={56} className="rounded-full opacity-40 grayscale" />
+      <span className="text-xs font-semibold uppercase tracking-widest">Foto em breve</span>
+    </div>
   );
 }
 
@@ -372,6 +387,40 @@ export default function Home() {
                 </a>
               ))}
             </div>
+
+            <h3 className="mb-6 mt-16 text-center font-display text-2xl font-bold uppercase">
+              Nossa vitrine
+            </h3>
+            <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {products.map((product) => (
+                <li
+                  key={product.name}
+                  className="overflow-hidden rounded-2xl border border-white/10 bg-surface-2"
+                >
+                  <div className="relative aspect-square">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <PhotoPlaceholder />
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs uppercase tracking-widest text-brand">
+                      {product.category}
+                    </p>
+                    <p className="font-display text-lg font-medium uppercase">
+                      {product.name}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
