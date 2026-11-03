@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d0d0d;
+  --foreground: #f5f5f4;
+  --surface: #171717;
+  --surface-2: #1f1f1f;
+  --brand: #e10600;
+  --brand-dark: #a80400;
+  --muted: #a8a29e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Faixa vermelha inclinada, no estilo das artes do Instagram */
+.ribbon {
+  background: var(--brand);
+  transform: rotate(-2deg);
+  box-shadow: 0 6px 0 #fff;
+}
+
+/* Brasa no rodapé das seções escuras */
+.embers {
+  background-image:
+    radial-gradient(circle at 10% 100%, rgba(225, 6, 0, 0.35), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgba(255, 90, 0, 0.25), transparent 35%),
+    radial-gradient(circle at 50% 120%, rgba(225, 6, 0, 0.4), transparent 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
