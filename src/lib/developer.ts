@@ -4,8 +4,9 @@ export const developer = {
   role: "Engenheiro de Software Front-End",
   portfolio: "https://jackson-portfolio-tawny.vercel.app/",
   links: [
-    { label: "GitHub", href: "https://github.com/JacksonLuiz99" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/jacksonluizdev/" },
-    { label: "Instagram", href: "https://www.instagram.com/jacksonluiz99/" },
+    { label: "Portfólio", icon: "globe", href: "https://jackson-portfolio-tawny.vercel.app/" },
+    { label: "GitHub", icon: "github", href: "https://github.com/JacksonLuiz99" },
+    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/jacksonluizdev/" },
+    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/jacksonluiz99/" },
   ],
-};
+} as const;
