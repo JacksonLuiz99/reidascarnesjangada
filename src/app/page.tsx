@@ -383,37 +383,40 @@ export default function Home() {
         <section id="produtos" className="bg-surface py-20">
           <div className="mx-auto max-w-6xl px-4">
             <SectionTitle eyebrow="O que você encontra" title="Tudo para a sua mesa" />
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
               {categories.map(({ icon: CategoryIcon, title, text, message }) => (
                 <a
                   key={title}
                   href={site.whatsappUrl(message)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center rounded-2xl border border-white/10 bg-surface-2 p-6 text-center transition hover:-translate-y-1 hover:border-brand"
+                  className="group flex flex-col items-center rounded-2xl border border-white/10 bg-surface-2 p-4 text-center transition hover:-translate-y-1 hover:border-brand sm:p-6"
                 >
-                  <span className="flex size-20 items-center justify-center rounded-full border-4 border-brand bg-black text-white ring-4 ring-white/10 transition group-hover:bg-brand">
-                    <CategoryIcon className="size-9" />
+                  <span className="flex size-14 items-center justify-center rounded-full border-4 border-brand bg-black text-white ring-4 ring-white/10 transition group-hover:bg-brand sm:size-20">
+                    <CategoryIcon className="size-6 sm:size-9" />
                   </span>
-                  <h3 className="mt-5 font-display text-xl font-bold uppercase">
+                  <h3 className="mt-3 font-display text-lg font-bold uppercase sm:mt-5 sm:text-xl">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted">{text}</p>
-                  <span className="mt-4 text-sm font-semibold text-brand">
-                    Consultar no WhatsApp →
+                  <p className="mt-1 text-xs text-muted sm:mt-2 sm:text-sm">{text}</p>
+                  <span className="mt-auto pt-3 text-xs font-semibold text-brand sm:pt-4 sm:text-sm">
+                    Consultar →
                   </span>
                 </a>
               ))}
             </div>
 
-            <h3 className="mb-6 mt-16 text-center font-display text-2xl font-bold uppercase">
-              Nossa vitrine
-            </h3>
-            <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="mb-5 mt-14 flex items-end justify-between gap-4 sm:mt-16 sm:justify-center">
+              <h3 className="font-display text-2xl font-bold uppercase">Nossa vitrine</h3>
+              <span className="text-xs text-muted md:hidden" aria-hidden>
+                deslize →
+              </span>
+            </div>
+            <ul className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
               {products.map((product) => (
                 <li
                   key={product.name}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-surface-2"
+                  className="w-40 shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 bg-surface-2 md:w-auto"
                 >
                   <div className="relative aspect-square">
                     {product.image ? (
@@ -421,15 +424,15 @@ export default function Home() {
                         src={product.image}
                         alt={product.name}
                         fill
-                        sizes="(min-width: 768px) 25vw, 50vw"
+                        sizes="(min-width: 768px) 25vw, 160px"
                         className="object-cover"
                       />
                     ) : (
                       <PhotoPlaceholder />
                     )}
                   </div>
-                  <div className="p-4">
-                    <p className="text-xs uppercase tracking-widest text-brand">
+                  <div className="p-3 sm:p-4">
+                    <p className="text-[10px] uppercase tracking-widest text-brand sm:text-xs">
                       {product.category}
                     </p>
                     <p className="font-display text-lg font-medium uppercase">
@@ -479,7 +482,7 @@ export default function Home() {
         <section className="bg-surface py-20">
           <div className="mx-auto max-w-6xl px-4">
             <SectionTitle eyebrow={site.instagram.handle} title="Acompanhe as novidades" />
-            <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2">
+            <div className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-auto sm:grid sm:max-w-3xl sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
               {[
                 {
                   src: "/images/post-tem-novidade.jpg",
@@ -495,14 +498,14 @@ export default function Home() {
                   href={site.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-2xl border border-white/10 transition hover:border-brand"
+                  className="w-[72%] shrink-0 snap-center overflow-hidden rounded-2xl border border-white/10 transition hover:border-brand sm:w-auto"
                 >
                   <Image
                     src={post.src}
                     alt={post.alt}
                     width={1080}
                     height={1350}
-                    sizes="(min-width: 640px) 384px, 100vw"
+                    sizes="(min-width: 640px) 384px, 72vw"
                     className="transition duration-500 hover:scale-105"
                   />
                 </a>
@@ -553,7 +556,10 @@ export default function Home() {
                   {site.hours ? (
                     <ul className="text-stone-300">
                       {site.hours.map((line) => (
-                        <li key={line}>{line}</li>
+                        <li key={line} className="mt-1">
+                          <span className="block font-semibold text-white">{line.split(": ")[0]}</span>
+                          {line.split(": ")[1]}
+                        </li>
                       ))}
                     </ul>
                   ) : (
@@ -597,7 +603,7 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Pedir pelo WhatsApp"
-        className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-110"
+        className="fixed bottom-4 right-4 z-50 flex size-13 sm:bottom-5 sm:right-5 sm:size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-110"
       >
         <WhatsappIcon className="size-7" />
       </a>

@@ -22,7 +22,7 @@ const styles: Record<Variant, { box: string; number: string; label: string; sep:
   // Seção vermelha: caixas pretas com borda branca, números enormes.
   section: {
     box: "bg-black shadow-2xl ring-2 ring-white",
-    number: "text-5xl sm:text-6xl text-white",
+    number: "text-4xl sm:text-6xl text-white",
     label: "text-brand",
     sep: "text-black",
   },
@@ -33,7 +33,7 @@ export function Countdown({ target, variant = "section" }: { target: string; var
   const now = useSyncExternalStore(subscribe, nowInSeconds, () => null);
   const targetSeconds = Math.floor(new Date(target).getTime() / 1000);
   const s = styles[variant];
-  const boxHeight = variant === "hero" ? "h-[84px] sm:h-[100px]" : "h-[96px] sm:h-[116px]";
+  const boxHeight = variant === "hero" ? "h-[84px] sm:h-[100px]" : "h-[88px] sm:h-[116px]";
 
   if (now !== null && targetSeconds - now <= 0) {
     return (
@@ -65,7 +65,7 @@ export function Countdown({ target, variant = "section" }: { target: string; var
             </span>
           )}
           <div
-            className={`flex max-w-24 flex-1 flex-col items-center justify-center rounded-2xl ${boxHeight} ${s.box}`}
+            className={`flex min-w-0 max-w-24 flex-1 flex-col items-center justify-center rounded-2xl ${boxHeight} ${s.box}`}
           >
             <span className={`font-display font-bold leading-none tabular-nums ${s.number}`}>
               {part.value === null ? "--" : String(part.value).padStart(2, "0")}
