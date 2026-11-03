@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Oswald } from "next/font/google";
+import { developer } from "@/lib/developer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://reidascarnesjangada.vercel.app"),
   title: `${site.name} | ${site.city}`,
   description: site.description,
+  authors: [{ name: developer.name, url: developer.portfolio }],
+  creator: developer.name,
   openGraph: {
     title: `${site.name} | ${site.city}`,
     description: site.description,

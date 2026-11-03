@@ -69,3 +69,8 @@ O que ainda é provisório (logo em alta resolução, fotos reais, abertura aos 
 ## Commits
 
 Um commit por etapa, em português e no padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/) (`feat:`, `fix:`, `docs:`, `chore:`).
+
+## Créditos
+
+Desenvolvido por **[Jackson Luiz](https://jackson-portfolio-tawny.vercel.app/)**, Engenheiro de Software Front-End.
+[GitHub](https://github.com/JacksonLuiz99) · [LinkedIn](https://www.linkedin.com/in/jacksonluizdev/) · [Instagram](https://www.instagram.com/jacksonluiz99/)

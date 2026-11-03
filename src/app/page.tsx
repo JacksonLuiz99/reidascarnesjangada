@@ -14,6 +14,7 @@ import {
   WhatsappIcon,
 } from "@/components/icons";
 import { Countdown } from "@/components/countdown";
+import { developer } from "@/lib/developer";
 import { products } from "@/lib/products";
 import { mapsEmbedUrl, mapsLinkUrl, site } from "@/lib/site";
 
@@ -607,6 +608,46 @@ export default function Home() {
             © <CurrentYear /> {site.name} · {site.address.street},{" "}
             {site.address.district} · {site.address.city}-{site.address.state}
           </p>
+        </div>
+        <div className="border-t border-white/10">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-5 pb-24 text-xs text-muted sm:flex-row sm:pb-5">
+            <p>
+              Desenvolvido por{" "}
+              <a
+                href={developer.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-foreground underline-offset-4 hover:text-brand hover:underline"
+              >
+                {developer.name}
+              </a>{" "}
+              · {developer.role}
+            </p>
+            <ul className="flex gap-4">
+              {developer.links.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href={developer.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground"
+                >
+                  Portfólio
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </footer>
 
