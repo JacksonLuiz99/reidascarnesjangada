@@ -432,11 +432,12 @@ export default function Home() {
             </div>
             <div className="min-h-80 overflow-hidden rounded-2xl border border-white/10 lg:col-span-3">
               <iframe
-                title="Mapa do Rei das Carnes em Jangada-MT"
+                title="Street View da fachada do Rei das Carnes em Jangada-MT"
                 src={mapsEmbedUrl}
-                className="size-full min-h-80 grayscale-[30%]"
+                className="size-full min-h-80"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
           </div>

@@ -22,7 +22,6 @@ export const site = {
     district: "Centro",
     city: "Jangada",
     state: "MT",
-    mapsQuery: "Rua Natalino Piovesan, Centro, Jangada - MT",
   },
   // Ainda não definidos — quando definir, troque `null` pelo valor
   // (ex.: openingDate: "2026-11-20", hours: ["Seg a Sáb: 7h às 19h", "Dom: 7h às 12h"]).
@@ -30,10 +29,11 @@ export const site = {
   hours: null as string[] | null,
 };
 
-export const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
-  site.address.mapsQuery,
-)}&output=embed`;
+// Coordenadas exatas da loja (Street View enviado pelo cliente).
+export const coordinates = { lat: -15.23843657139266, lng: -56.49159566883414 };
 
-export const mapsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  site.address.mapsQuery,
-)}`;
+// Street View da fachada, gerado em "Compartilhar > Incorporar mapa" no Google Maps.
+export const mapsEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!3m2!1spt-BR!2sbr!4v1793717494667!5m2!1spt-BR!2sbr!6m8!1m7!1sZXFrsbZEvJXUXNTxtWniZQ!2m2!1d-15.23843657139266!2d-56.49159566883414!3f269.26471290907415!4f6.7692573878611455!5f0.7820865974627469";
+
+export const mapsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${coordinates.lat},${coordinates.lng}`;
